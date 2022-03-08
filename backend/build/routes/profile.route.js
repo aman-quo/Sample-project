@@ -11,19 +11,19 @@ exports["default"] = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
-var userController = _interopRequireWildcard(require("../controllers/user.controller"));
+var profileController = _interopRequireWildcard(require("../controllers/profile.controller"));
 
-var _user2 = require("../validators/user.validator");
+var _profile2 = require("../validators/profile.validator");
+
+var _auth = require("../middlewares/auth.middleware");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-var router = _express["default"].Router(); //route to create a new user
+var profileRoute = _express["default"].Router(); //api for add profile
 
 
-router.post('/register', _user2.newUserValidator, userController.newUser); //route to login a new user
-
-router.post('/login', userController.login);
-var _default = router;
+profileRoute.post('/profile', _auth.userAuth, _profile2.profileValidator, profileController.addProfile);
+var _default = profileRoute;
 exports["default"] = _default;
