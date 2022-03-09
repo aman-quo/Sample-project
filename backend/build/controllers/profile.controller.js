@@ -29,46 +29,45 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
  */
 var addProfile = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res, next) {
-    var data;
+    var id, data;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.prev = 0;
-            _context.next = 3;
-            return ProfileServices.addProfile(req.body);
+            id = req.user._id;
+            _context.next = 4;
+            return ProfileServices.addProfile(req.body, id);
 
-          case 3:
+          case 4:
             data = _context.sent;
 
-            if (!data) {
-              res.status(_httpStatusCodes["default"].UNAUTHORIZED).json({
-                code: _httpStatusCodes["default"].UNAUTHORIZED,
-                data: data,
-                message: 'Data already exist or not valid'
-              });
-            } else {
-              res.status(_httpStatusCodes["default"].CREATED).json({
-                code: _httpStatusCodes["default"].CREATED,
-                data: data,
-                message: 'Profile created successfully'
+            if (data === 'Profile already exist') {
+              res.status(_httpStatusCodes["default"].BAD_REQUEST).json({
+                code: _httpStatusCodes["default"].BAD_REQUEST,
+                message: 'Profile already exist'
               });
             }
 
-            _context.next = 10;
+            res.status(_httpStatusCodes["default"].CREATED).json({
+              code: _httpStatusCodes["default"].CREATED,
+              data: data,
+              message: 'Profile created successfully'
+            });
+            _context.next = 12;
             break;
 
-          case 7:
-            _context.prev = 7;
+          case 9:
+            _context.prev = 9;
             _context.t0 = _context["catch"](0);
             next(_context.t0);
 
-          case 10:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 9]]);
   }));
 
   return function addProfile(_x, _x2, _x3) {

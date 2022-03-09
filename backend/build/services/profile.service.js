@@ -15,34 +15,44 @@ var _profile = _interopRequireDefault(require("../models/profile.model"));
 
 //create new profile
 var addProfile = /*#__PURE__*/function () {
-  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(body) {
-    var data;
+  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(body, id) {
+    var profileExist, data;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.prev = 0;
-            _context.next = 3;
+            _context.next = 2;
+            return _profile["default"].findOne({
+              userId: id
+            });
+
+          case 2:
+            profileExist = _context.sent;
+
+            if (!profileExist) {
+              _context.next = 7;
+              break;
+            }
+
+            return _context.abrupt("return", 'Profile already exist');
+
+          case 7:
+            _context.next = 9;
             return _profile["default"].create(body);
 
-          case 3:
+          case 9:
             data = _context.sent;
             return _context.abrupt("return", data);
 
-          case 7:
-            _context.prev = 7;
-            _context.t0 = _context["catch"](0);
-            throw _context.t0;
-
-          case 10:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee);
   }));
 
-  return function addProfile(_x) {
+  return function addProfile(_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }();
