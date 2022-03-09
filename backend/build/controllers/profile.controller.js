@@ -40,11 +40,21 @@ var addProfile = /*#__PURE__*/function () {
 
           case 3:
             data = _context.sent;
-            res.status(_httpStatusCodes["default"].CREATED).json({
-              code: _httpStatusCodes["default"].CREATED,
-              data: data,
-              message: 'Profile created successfully'
-            });
+
+            if (!data) {
+              res.status(_httpStatusCodes["default"].UNAUTHORIZED).json({
+                code: _httpStatusCodes["default"].UNAUTHORIZED,
+                data: data,
+                message: 'Data already exist or not valid'
+              });
+            } else {
+              res.status(_httpStatusCodes["default"].CREATED).json({
+                code: _httpStatusCodes["default"].CREATED,
+                data: data,
+                message: 'Profile created successfully'
+              });
+            }
+
             _context.next = 10;
             break;
 

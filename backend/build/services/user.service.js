@@ -17,11 +17,7 @@ var _bcrypt = _interopRequireDefault(require("bcrypt"));
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
-var _dotenv = _interopRequireDefault(require("dotenv"));
-
-_dotenv["default"].config(); //create new user
-
-
+//create new user
 var newUser = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(body) {
     var HashedPassword, data;
