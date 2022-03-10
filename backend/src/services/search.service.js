@@ -5,9 +5,9 @@ export const searchInterest = async (interest) => {
     const data = await Profile.find({
         $or: [{ interests: { $regex: interest.toString(), $options: 'i' } }],
     });
-    if (data) {
-        return data;
-    } else {
+    if (!data.length) {
         return 'Interests not found';
+    } else {
+        return data;
     }
 };
