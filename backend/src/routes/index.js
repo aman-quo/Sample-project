@@ -3,6 +3,7 @@ const router = express.Router();
 
 import userRoute from './user.route';
 import profileRoute from './profile.route';
+import searchRoute from './search.route';
 /**
  * Function contains Application routes
  *
@@ -14,7 +15,7 @@ const routes = () => {
   });
   router.use('/users', userRoute);
   router.use('/profiles', profileRoute);
-
+  router.use('/searches', searchRoute);
   return router;
 };
 
