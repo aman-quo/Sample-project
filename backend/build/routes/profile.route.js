@@ -24,6 +24,8 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 var profileRoute = _express["default"].Router(); //api for add profile
 
 
-profileRoute.post('/profile', _auth.userAuth, _profile2.profileValidator, profileController.addProfile);
+profileRoute.post('/profile', _auth.userAuth, _profile2.profileValidator, profileController.addProfile); // //api for contact
+// profileRoute.post('/addContact/:_id',userAuth, profileController.addContact)
+
 var _default = profileRoute;
 exports["default"] = _default;
