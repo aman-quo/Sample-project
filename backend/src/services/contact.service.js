@@ -43,12 +43,10 @@ createContact = async (profileId, contactList) => {
             };
 
             contactList.contacts = [newContact];
-
             const data = await Contact.create(contactList);
             return data;
         }
     } catch (err) {
-        console.log(err);
         return 'error';
     }
 };

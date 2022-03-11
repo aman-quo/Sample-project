@@ -15,7 +15,6 @@ export const createContact = async (req, res) => {
                 message: 'Contact already exists'
             });
         } else if (data === 'error') {
-            console.log((data));
             res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 message: 'Internal server error'
             });
@@ -26,7 +25,6 @@ export const createContact = async (req, res) => {
             });
         }
     } catch (error) {
-        console.log('contro',error);
       next(error)
     }
 };
