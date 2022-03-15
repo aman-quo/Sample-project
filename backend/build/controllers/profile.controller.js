@@ -41,33 +41,25 @@ var addProfile = /*#__PURE__*/function () {
 
           case 4:
             data = _context.sent;
-
-            if (data === 'Profile already exist') {
-              res.status(_httpStatusCodes["default"].BAD_REQUEST).json({
-                code: _httpStatusCodes["default"].BAD_REQUEST,
-                message: 'Profile already exist'
-              });
-            }
-
             res.status(_httpStatusCodes["default"].CREATED).json({
               code: _httpStatusCodes["default"].CREATED,
               data: data,
               message: 'Profile created successfully'
             });
-            _context.next = 12;
+            _context.next = 11;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
             next(_context.t0);
 
-          case 12:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function addProfile(_x, _x2, _x3) {

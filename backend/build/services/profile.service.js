@@ -28,23 +28,14 @@ var addProfile = /*#__PURE__*/function () {
 
           case 2:
             profileExist = _context.sent;
-
-            if (!profileExist) {
-              _context.next = 7;
-              break;
-            }
-
-            return _context.abrupt("return", 'Profile already exist');
-
-          case 7:
-            _context.next = 9;
+            _context.next = 5;
             return _profile["default"].create(body);
 
-          case 9:
+          case 5:
             data = _context.sent;
             return _context.abrupt("return", data);
 
-          case 11:
+          case 7:
           case "end":
             return _context.stop();
         }

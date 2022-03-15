@@ -25,6 +25,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { LayoutModule } from '@angular/cdk/layout';
+import { AboutComponent } from './components/about/about.component';
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 
 @NgModule({
@@ -32,7 +37,10 @@ import { HomeComponent } from './components/home/home.component';
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent,
+    ProfileComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -54,7 +62,9 @@ import { HomeComponent } from './components/home/home.component';
     MatDialogModule,
     FlexLayoutModule,
     MatMenuModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatGridListModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

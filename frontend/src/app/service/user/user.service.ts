@@ -7,8 +7,10 @@ import { HttpService } from '../http/http.service';
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private httpService: HttpService) { }
+  token: any;
+  constructor(private httpService: HttpService) {
+    this.token = localStorage.getItem('token')
+   }
   Register(reqData: any) {
     let httpOptions = {
       headers: new HttpHeaders({
@@ -33,6 +35,22 @@ export class UserService {
       `${environment.baseUrl}/api/v1/users/login`,
       reqData,
       false,
+      httpOptions
+    );
+  }
+
+  Profile(reqData: any) {
+    this.token = localStorage.getItem('token');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+ this.token,
+      }),
+    };
+    return this.httpService.post(
+      `${environment.baseUrl}/api/v1/profiles/profile`,
+      reqData,
+      true,
       httpOptions
     );
   }

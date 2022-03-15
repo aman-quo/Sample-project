@@ -1,4 +1,25 @@
-.endIcons{
-    display: flex;
-    padding-right: 10px;
-    }
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.welcome {
+  text-align: center;
+  font-size:large;
+  margin-top: 250px;
+}
+.image {
+  margin-left: 500px;
+}
