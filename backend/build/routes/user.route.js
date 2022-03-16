@@ -24,6 +24,6 @@ var router = _express["default"].Router(); //route to create a new user
 
 router.post('/register', _user2.newUserValidator, userController.newUser); //route to login a new user
 
-router.post('/login', userController.login);
+router.post('/login', _user2.loginValidator, userController.login);
 var _default = router;
 exports["default"] = _default;

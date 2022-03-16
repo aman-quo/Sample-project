@@ -1,23 +1,29 @@
-import { Schema, model } from 'mongoose';
-
-const userSchema = new Schema(
+import mongoose from 'mongoose';
+import User from './user.model';
+const profileSchema = mongoose.Schema(
   {
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     name: {
       type: String,
+      required: true,
     },
     DOB: {
       type: String,
+      required: true,
+
     },
-    interests: {
-      type: String,
-    },
+    interests: [
+      String
+    ],
     location: {
       type: String,
+      required: true,
+
     }
   },
   {
     timestamps: true
   }
 );
-
-export default model('Profile', userSchema);
+const Profile = mongoose.model('profiles', profileSchema);
+export default Profile;

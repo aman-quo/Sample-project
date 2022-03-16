@@ -15,9 +15,6 @@ var _httpStatusCodes = _interopRequireDefault(require("http-status-codes"));
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
-var _dotenv = _interopRequireDefault(require("dotenv"));
-
-_dotenv["default"].config();
 /**
  * Middleware to authenticate if user has a valid Authorization token
  * Authorization: Bearer <token>
@@ -26,12 +23,9 @@ _dotenv["default"].config();
  * @param {Object} res
  * @param {Function} next
  */
-
-
 var userAuth = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res, next) {
-    var bearerToken, _yield$jwt$verify, user;
-
+    var bearerToken, user;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -51,29 +45,25 @@ var userAuth = /*#__PURE__*/function () {
 
           case 4:
             bearerToken = bearerToken.split(' ')[1];
-            _context.next = 7;
-            return _jsonwebtoken["default"].verify(bearerToken, process.env.SECRET);
-
-          case 7:
-            _yield$jwt$verify = _context.sent;
-            user = _yield$jwt$verify.user;
+            user = _jsonwebtoken["default"].verify(bearerToken, process.env.SECRET);
+            req.user = user;
             res.locals.user = user;
             res.locals.token = bearerToken;
             next();
-            _context.next = 17;
+            _context.next = 15;
             break;
 
-          case 14:
-            _context.prev = 14;
+          case 12:
+            _context.prev = 12;
             _context.t0 = _context["catch"](0);
             next(_context.t0);
 
-          case 17:
+          case 15:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 14]]);
+    }, _callee, null, [[0, 12]]);
   }));
 
   return function userAuth(_x, _x2, _x3) {

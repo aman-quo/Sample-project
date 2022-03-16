@@ -1,29 +1,39 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 
-var _mongoose = require("mongoose");
+var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var userSchema = new _mongoose.Schema({
+var _user = _interopRequireDefault(require("./user.model"));
+
+var profileSchema = _mongoose["default"].Schema({
+  userId: {
+    type: _mongoose["default"].Schema.Types.ObjectId,
+    ref: 'User'
+  },
   name: {
-    type: String
+    type: String,
+    required: true
   },
   DOB: {
-    type: String
+    type: String,
+    required: true
   },
-  interests: {
-    type: String
-  },
+  interests: [String],
   location: {
-    type: String
+    type: String,
+    required: true
   }
 }, {
   timestamps: true
 });
 
-var _default = (0, _mongoose.model)('Profile', userSchema);
+var Profile = _mongoose["default"].model('profiles', profileSchema);
 
+var _default = Profile;
 exports["default"] = _default;

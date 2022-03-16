@@ -17,32 +17,45 @@ var _bcrypt = _interopRequireDefault(require("bcrypt"));
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
-var _dotenv = _interopRequireDefault(require("dotenv"));
-
-_dotenv["default"].config(); //create new user
-
-
+//create new user
 var newUser = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(body) {
-    var HashedPassword, data;
+    var check, HashedPassword, data;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _bcrypt["default"].hash(body.password, 10);
+            return _user["default"].findOne({
+              email: body.email,
+              phoneNo: body.phoneNo
+            });
 
           case 2:
+            check = _context.sent;
+
+            if (!check) {
+              _context.next = 7;
+              break;
+            }
+
+            throw new Error('User already exist');
+
+          case 7:
+            _context.next = 9;
+            return _bcrypt["default"].hash(body.password, 10);
+
+          case 9:
             HashedPassword = _context.sent;
             body.password = HashedPassword;
-            _context.next = 6;
+            _context.next = 13;
             return _user["default"].create(body);
 
-          case 6:
+          case 13:
             data = _context.sent;
             return _context.abrupt("return", data);
 
-          case 8:
+          case 15:
           case "end":
             return _context.stop();
         }

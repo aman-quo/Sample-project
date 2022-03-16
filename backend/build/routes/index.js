@@ -13,6 +13,10 @@ var _user = _interopRequireDefault(require("./user.route"));
 
 var _profile = _interopRequireDefault(require("./profile.route"));
 
+var _search = _interopRequireDefault(require("./search.route"));
+
+var _contact = _interopRequireDefault(require("./contact.route"));
+
 var router = _express["default"].Router();
 
 /**
@@ -26,6 +30,8 @@ var routes = function routes() {
   });
   router.use('/users', _user["default"]);
   router.use('/profiles', _profile["default"]);
+  router.use('/searches', _search["default"]);
+  router.use('/contacts', _contact["default"]);
   return router;
 };
 

@@ -1,13 +1,15 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
 
-var _mongoose = require("mongoose");
+var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var userSchema = new _mongoose.Schema({
+var userSchema = _mongoose["default"].Schema({
   phoneNo: {
     type: Number,
     unique: true
@@ -23,6 +25,7 @@ var userSchema = new _mongoose.Schema({
   timestamps: true
 });
 
-var _default = (0, _mongoose.model)('User', userSchema);
+var User = _mongoose["default"].model('User', userSchema);
 
+var _default = User;
 exports["default"] = _default;

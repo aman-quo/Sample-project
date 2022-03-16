@@ -46,7 +46,6 @@ app.use(_express["default"].json());
 app.use((0, _morgan["default"])('combined', {
   stream: _logger.logStream
 }));
-(0, _database["default"])();
 app.use("/api/".concat(api_version), (0, _routes["default"])());
 app.use(_error.appErrorHandler);
 app.use(_error.genericErrorHandler);
@@ -54,5 +53,6 @@ app.use(_error.notFound);
 app.listen(port, function () {
   _logger["default"].info("Server started at ".concat(host, ":").concat(port, "/api/").concat(api_version, "/"));
 });
+(0, _database["default"])();
 var _default = app;
 exports["default"] = _default;

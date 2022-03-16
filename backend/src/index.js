@@ -27,7 +27,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('combined', { stream: logStream }));
 
-database();
 
 app.use(`/api/${api_version}`, routes());
 app.use(appErrorHandler);
@@ -37,5 +36,6 @@ app.use(notFound);
 app.listen(port, () => {
   logger.info(`Server started at ${host}:${port}/api/${api_version}/`);
 });
+database();
 
 export default app;
