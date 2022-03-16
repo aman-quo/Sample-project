@@ -1,30 +1,15 @@
 import mongoose from 'mongoose';
-import User from './user.model.js';
-import Profile from './profile.model.js';
 
 const contactSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    contacts: [{
-        profileId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Profile'
-        },
-        name: {
-            type: String,
-            required: true
-        },
-        phoneNo: {
-            type: String,
-            required: true
-        },
-        email: {
-            type: String,
-        }
-    }]
+   contacts:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'profiles'
+   }]
 });
 
-const Contact = mongoose.model("Contact", contactSchema)
+const Contact = mongoose.model("contacts", contactSchema)
 export default Contact;

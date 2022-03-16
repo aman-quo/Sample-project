@@ -24,10 +24,7 @@ var profileSchema = _mongoose["default"].Schema({
     type: String,
     required: true
   },
-  interests: {
-    type: String,
-    required: true
-  },
+  interests: [String],
   location: {
     type: String,
     required: true
@@ -36,7 +33,7 @@ var profileSchema = _mongoose["default"].Schema({
   timestamps: true
 });
 
-var Profile = _mongoose["default"].model('Profile', profileSchema);
+var Profile = _mongoose["default"].model('profiles', profileSchema);
 
 var _default = Profile;
 exports["default"] = _default;

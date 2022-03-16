@@ -54,4 +54,20 @@ export class UserService {
       httpOptions
     );
   }
+
+  getAllSearchInterests(reqData: any) {
+    this.token = localStorage.getItem('token');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+ this.token,
+      }),
+    };
+    return this.httpService.get(
+      `${environment.baseUrl}/api/v1/searches`,
+      reqData,
+      true,
+      httpOptions
+    );
+  }
 }

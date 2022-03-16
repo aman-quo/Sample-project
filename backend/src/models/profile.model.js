@@ -12,11 +12,9 @@ const profileSchema = mongoose.Schema(
       required: true,
 
     },
-    interests: {
-      type: String,
-      required: true,
-
-    },
+    interests: [
+      String
+    ],
     location: {
       type: String,
       required: true,
@@ -27,5 +25,5 @@ const profileSchema = mongoose.Schema(
     timestamps: true
   }
 );
-const Profile = mongoose.model('Profile', profileSchema);
+const Profile = mongoose.model('profiles', profileSchema);
 export default Profile;

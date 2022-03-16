@@ -5,5 +5,5 @@ import { userAuth} from '../middlewares/auth.middleware';
 
 const profileRoute = express.Router();
 //api for add profile
-profileRoute.post('/profile',userAuth, profileValidator, profileController.addProfile);
+profileRoute.post('/',userAuth, profileValidator, profileController.addProfile);
 export default profileRoute;

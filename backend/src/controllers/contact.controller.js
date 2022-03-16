@@ -3,28 +3,12 @@ import * as service from '../services/contact.service.js'
 
 export const createContact = async (req, res) => {
     try {
-        const contactList = {
-            userId: req.user.id,
-        };
-        const data = await service.createContact(
-            req.params.id,
-            contactList
-        );
-        if (data === 'contact already exists') {
-            res.status(HttpStatus.BAD_REQUEST).json({
-                message: 'Contact already exists'
-            });
-        } else if (data === 'error') {
-            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-                message: 'Internal server error'
-            });
-        } else {
-            res.status(HttpStatus.CREATED).json({
-                data: data,
-                message: 'Contact saved'
-            });
-        }
+        const input = await service.createContact(req.user.id, req.params.profileId)
+        res.status(HttpStatus.CREATED).json({
+            message: 'Contact created succesfully',
+            data:input
+        })
     } catch (error) {
-      next(error)
+        res.status(error.status || HttpStatus.INTERNAL_SERVER_ERROR).json({ success: false, error, message: error.message || "Error occured in controller", });
     }
 };

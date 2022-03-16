@@ -9,9 +9,16 @@ import * as ProfileServices from '../services/profile.service'
  */
 export const addProfile = async (req, res, next) => {
   try {
-    const id = req.user._id;
+    const id = req.user.id;
     const data = await ProfileServices.addProfile(req.body, id);
-    res.status(HttpStatus.CREATED).json({
+    if (data === 'Profile already exist') {
+     return res.status(HttpStatus.CONFLICT).json({
+        code: HttpStatus.CONFLICT,
+        message: 'Profile already exist',
+        data:data
+      })
+    }
+    return res.status(HttpStatus.CREATED).json({
       code: HttpStatus.CREATED,
       data: data,
       message: 'Profile created successfully'
