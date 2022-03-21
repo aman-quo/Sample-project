@@ -63,9 +63,10 @@ var addProfile = /*#__PURE__*/function () {
           case 10:
             _context.prev = 10;
             _context.t0 = _context["catch"](0);
+            console.log(_context.t0);
             next(_context.t0);
 
-          case 13:
+          case 14:
           case "end":
             return _context.stop();
         }

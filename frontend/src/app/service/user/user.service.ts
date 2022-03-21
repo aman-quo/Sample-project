@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '../http/http.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -48,14 +49,14 @@ export class UserService {
       }),
     };
     return this.httpService.post(
-      `${environment.baseUrl}/api/v1/profiles/profile`,
+      `${environment.baseUrl}/api/v1/profiles`,
       reqData,
       true,
       httpOptions
     );
   }
 
-  getAllSearchInterests(reqData: any) {
+  Search(reqData: any){
     this.token = localStorage.getItem('token');
     let httpOptions = {
       headers: new HttpHeaders({
@@ -63,7 +64,7 @@ export class UserService {
         Authorization: 'Bearer '+ this.token,
       }),
     };
-    return this.httpService.get(
+    return this.httpService.post(
       `${environment.baseUrl}/api/v1/searches`,
       reqData,
       true,

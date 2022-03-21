@@ -6,7 +6,7 @@ export const profileValidator = (req, res, next) => {
       .required(),
     DOB: Joi.string()
       .required(),
-    interests: Joi.array()
+    interests: Joi.string()
       .required(),
     location: Joi.string()
       .required()

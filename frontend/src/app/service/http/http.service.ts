@@ -9,7 +9,4 @@ export class HttpService {
   post(url: string, payload: any, token: boolean, httpOptions: any) {
     return this.http.post(url, payload, token && httpOptions)
   }
-  get(url: string, payload: any, token: boolean, httpOptions: any) {
-    return this.http.post(url, payload, token && httpOptions)
-  }
 }

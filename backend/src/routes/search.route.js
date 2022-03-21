@@ -5,5 +5,5 @@ import { userAuth} from '../middlewares/auth.middleware';
 
 const searchRoute = express.Router();
 //api for search interests
-searchRoute.get('/',userAuth, searchValidator, searchController.searchInterest);
+searchRoute.post('/',userAuth, searchValidator, searchController.searchInterest);
 export default searchRoute;

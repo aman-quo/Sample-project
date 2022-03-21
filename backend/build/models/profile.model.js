@@ -24,7 +24,10 @@ var profileSchema = _mongoose["default"].Schema({
     type: String,
     required: true
   },
-  interests: [String],
+  interests: {
+    type: String,
+    required: true
+  },
   location: {
     type: String,
     required: true

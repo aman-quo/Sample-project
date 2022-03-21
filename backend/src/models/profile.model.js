@@ -12,9 +12,10 @@ const profileSchema = mongoose.Schema(
       required: true,
 
     },
-    interests: [
-      String
-    ],
+    interests: {
+      type: String,
+      required: true,
+    },
     location: {
       type: String,
       required: true,
