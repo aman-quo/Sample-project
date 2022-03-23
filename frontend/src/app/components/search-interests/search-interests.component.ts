@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../service/user/user.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SearchInterestsComponent implements OnInit {
   searchForm!: FormGroup;
   submitted = false;
+  searchData:any
   constructor(private user: UserService, private fb: FormBuilder, private router: Router,
     private snackBar: MatSnackBar) { }
 
@@ -31,6 +32,8 @@ export class SearchInterestsComponent implements OnInit {
           verticalPosition: 'bottom',
           horizontalPosition: 'left',
         });
+        console.log(res);
+        this.searchData=res.data;
       },
       (err) => {
         console.log(err.message);

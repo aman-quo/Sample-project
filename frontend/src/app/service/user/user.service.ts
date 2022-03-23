@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '../http/http.service';
+import {HttpServiceContact} from '../http/http.service.contact.service'
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
   token: any;
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,private httpServiceContact:HttpServiceContact) {
     this.token = localStorage.getItem('token')
    }
   Register(reqData: any) {
@@ -67,6 +68,21 @@ export class UserService {
     return this.httpService.post(
       `${environment.baseUrl}/api/v1/searches`,
       reqData,
+      true,
+      httpOptions
+    );
+  }
+
+  Contact(_id: string){
+    this.token = localStorage.getItem('token');
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer '+this.token,
+      }),
+    };
+    return this.httpServiceContact.post(
+      `${environment.baseUrl}/api/v1/searches/${_id}`,
       true,
       httpOptions
     );
