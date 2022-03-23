@@ -29,6 +29,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AboutComponent } from './components/about/about.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import {MatTableModule} from '@angular/material/table';
+import { SearchInterestsComponent } from './components/search-interests/search-interests.component';
+import { DisplaySearchComponent } from './components/display-search/display-search.component';
 
 
 
@@ -40,6 +43,11 @@ import { ProfileComponent } from './components/profile/profile.component';
     HomeComponent,
     AboutComponent,
     ProfileComponent,
+    SearchInterestsComponent,
+    DisplaySearchComponent,
+    
+   
+ 
    
   ],
   imports: [
@@ -64,7 +72,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatMenuModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    LayoutModule
+    LayoutModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

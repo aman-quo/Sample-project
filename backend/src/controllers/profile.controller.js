@@ -24,6 +24,7 @@ export const addProfile = async (req, res, next) => {
       message: 'Profile created successfully'
     });
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };

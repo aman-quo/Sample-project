@@ -13,7 +13,7 @@ var profileValidator = function profileValidator(req, res, next) {
   var schema = _joi["default"].object({
     name: _joi["default"].string().required(),
     DOB: _joi["default"].string().required(),
-    interests: _joi["default"].array().required(),
+    interests: _joi["default"].string().required(),
     location: _joi["default"].string().required()
   });
 
