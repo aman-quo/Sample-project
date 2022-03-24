@@ -4,5 +4,5 @@ import { userAuth} from '../middlewares/auth.middleware';
 
 const contactRoute = express.Router();
 //api for add profile
-contactRoute.post('/:profileId',userAuth, contactController.createContact);
+contactRoute.post('/:_id',userAuth, contactController.createContact);
 export default contactRoute;

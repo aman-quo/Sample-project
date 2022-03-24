@@ -3,7 +3,7 @@ import * as service from '../services/contact.service.js'
 
 export const createContact = async (req, res) => {
     try {
-        const input = await service.createContact(req.user.id, req.params.profileId)
+        const input = await service.createContact(req.user.id, req.params._id)
         res.status(HttpStatus.CREATED).json({
             message: 'Contact created succesfully',
             data:input

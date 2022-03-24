@@ -9,7 +9,7 @@ import * as SearchServices from '../services/search.service';
  */
 export const searchInterest = async (req, res, next) => {
     try {
-        const data = await SearchServices.searchInterest(req.body.interests);
+        const data = await SearchServices.searchInterest(req.params.interests);
         if (data === 'Interests not found') {
             res.status(HttpStatus.NOT_FOUND).json({
                 code: HttpStatus.NOT_FOUND,

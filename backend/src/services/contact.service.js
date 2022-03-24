@@ -1,11 +1,11 @@
 import Contact from '../models/contact.model.js';
 
-export const createContact = async (userId,profileId) => {
+export const createContact = async (userId,_id) => {
     try {
         return Contact.findOneAndUpdate(
             userId,
             {
-                $addToSet: { contacts: profileId }
+                $addToSet: { contacts: _id }
             },
             {
                 upsert: true, new: true

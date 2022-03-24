@@ -46,9 +46,10 @@ export class ProfileComponent implements OnInit {
         (res: any) => {
           this.snackBar.open(`${res.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
           horizontalPosition: 'left' })
-          this.router.navigate(['/home']);
+          this.router.navigate(['/about']);
         },
         (error) => {
+          console.log(error.message);
           this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
           horizontalPosition: 'left' })
         }
