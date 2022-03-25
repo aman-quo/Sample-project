@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { DisplaySearchComponent } from './display-search.component';
 
 describe('DisplaySearchComponent', () => {
@@ -8,7 +8,8 @@ describe('DisplaySearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DisplaySearchComponent ]
+      declarations: [ DisplaySearchComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   });

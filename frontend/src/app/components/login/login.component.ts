@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         });
         localStorage.setItem('token',res.data)
         console.log(res)
-        this.router.navigate(['/about']);
+        this.router.navigate(['/profile']);
       },
       (error) => {
         console.log(error.message);

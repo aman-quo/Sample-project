@@ -48,7 +48,6 @@ import { SearchComponent } from './components/search/search.component';
     DisplaySearchComponent,
     SearchComponent,
    
-   
   ],
   imports: [
     BrowserModule,
@@ -73,7 +72,11 @@ import { SearchComponent } from './components/search/search.component';
     BrowserAnimationsModule,
     MatGridListModule,
     LayoutModule,
-    MatTableModule
+    MatTableModule,  
+    
+  ],
+  exports: [
+    AppComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
