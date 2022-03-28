@@ -42,10 +42,12 @@ export class LoginComponent implements OnInit {
         });
         localStorage.setItem('token',res.data)
         console.log(res)
-        this.router.navigate(['/home']);
+        this.router.navigate(['/profile']);
       },
-      (err) => {
-        console.log(err.message);
+      (error) => {
+        console.log(error.message);
+        this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
+          horizontalPosition: 'left' })
       }
     );
   }

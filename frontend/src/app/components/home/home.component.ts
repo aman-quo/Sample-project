@@ -17,5 +17,8 @@ export class HomeComponent {
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
-
+ 
+   logout(){
+    localStorage.removeItem('token');
+  }
 }

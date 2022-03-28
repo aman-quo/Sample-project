@@ -22,10 +22,8 @@ export class SearchInterestsComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-    let reqData = {
-      interests: this.searchForm.value.interests,
-    };
-    this.user.Search(reqData).subscribe(
+      let interests= this.searchForm.value.interests;
+    this.user.Search(interests).subscribe(
       (res: any) => {
         this.snackBar.open(`${res.message}`, '', {
           duration: 3000,
@@ -35,8 +33,10 @@ export class SearchInterestsComponent implements OnInit {
         console.log(res);
         this.searchData=res.data;
       },
-      (err) => {
-        console.log(err.message);
+      (error) => {
+        console.log(error.message);
+        this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
+          horizontalPosition: 'left' })
       }
     );
   }

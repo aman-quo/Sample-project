@@ -32,6 +32,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {MatTableModule} from '@angular/material/table';
 import { SearchInterestsComponent } from './components/search-interests/search-interests.component';
 import { DisplaySearchComponent } from './components/display-search/display-search.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -45,9 +46,7 @@ import { DisplaySearchComponent } from './components/display-search/display-sear
     ProfileComponent,
     SearchInterestsComponent,
     DisplaySearchComponent,
-    
-   
- 
+    SearchComponent,
    
   ],
   imports: [
@@ -73,7 +72,11 @@ import { DisplaySearchComponent } from './components/display-search/display-sear
     BrowserAnimationsModule,
     MatGridListModule,
     LayoutModule,
-    MatTableModule
+    MatTableModule,  
+    
+  ],
+  exports: [
+    AppComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

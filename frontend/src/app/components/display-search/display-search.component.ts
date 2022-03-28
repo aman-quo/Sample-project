@@ -22,8 +22,10 @@ export class DisplaySearchComponent implements OnInit {
         horizontalPosition: 'left',
       });
       console.log(res);
-    }, (err) => {
-      console.log(err.message);
+    }, (error) => {
+      console.log(error.message);
+      this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
+          horizontalPosition: 'left' })
     }
     )
   }

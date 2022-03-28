@@ -10,10 +10,13 @@
         <button mat-button color="primary" routerLink="/profile">Profile</button>
       </mat-list-item>
       <mat-list-item>
+        <button mat-button color="primary" routerLink="/search">Search</button>
+      </mat-list-item>
+      <mat-list-item>
         <button mat-button color="primary" routerLink="/about">About Us</button>
       </mat-list-item>
       <mat-list-item>
-        <button mat-button color="primary" routerLink="/register">log out</button>
+        <button mat-button color="primary" routerLink="/register" (click)="logout()">log out</button>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
@@ -27,8 +30,6 @@
         <img src='../../../assets/home.png' />
       </span>
     </mat-toolbar>
-    <div class="welcome">
-      <app-search-interests></app-search-interests>
-    </div>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
