@@ -1,9 +1,8 @@
 import { expect } from 'chai';
 import request from 'supertest';
 import mongoose from 'mongoose';
+import app from '../src/index';
 
-
-import app from '../../src/index';
 
 describe('User APIs Test', () => {
   before((done) => {
@@ -47,6 +46,7 @@ describe('User APIs Test', () => {
         email: 'mkaubr007@gmail.com',
         password: 'Msingh123@'
       };
+     
       request(app)
         .post('/api/v1/users/register')
         .send(register)
@@ -86,16 +86,15 @@ describe('User APIs Test', () => {
   });
   describe('POST /profiles', () => {
     it('given profile details when proper should save in DB', (done) => {
-      const bearerToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1rYXViODAwN0BnbWFpbC5jb20iLCJpZCI6IjYyMjcwMzM1ZDgwMTU1MDFkNGQxNjBlMCIsInBob25lTm8iOjc4OTQ1NjEyMzIsImlhdCI6MTY0NjczNjcwMX0.QmwYyAiDAWH1qY-Uv2QBDmaujfPOLSLW7tjf8je2F_0';
       const profile = {
         name: 'Manish',
         DOB: '01/04/1996',
         interests: 'travelling',
-        location: 'India'
+        location: 'India',
       };
       request(app)
         .post('/api/v1/profiles/profile')
-        .set({ authorization: bearerToken })
+        .set('Bearer '+ userAuth)
         .send(profile)
         .end((err, res) => {
           expect(res.statusCode).to.be.equal(201);

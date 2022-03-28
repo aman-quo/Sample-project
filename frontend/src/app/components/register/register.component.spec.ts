@@ -1,17 +1,46 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RegisterComponent } from './register.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AppRoutingModule } from '../../app-routing.module';
+import { APP_BASE_HREF } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+class MockUserService {
+
+}
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      declarations: [RegisterComponent],
+      providers: [{
+        provide: APP_BASE_HREF, useValue: '/',
+        useClass: MockUserService
+      },],
+      imports: [
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatButtonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatSnackBarModule,
+        AppRoutingModule,
+        BrowserAnimationsModule 
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

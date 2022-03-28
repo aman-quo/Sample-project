@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
        alert("password didn't match");
     }
     if (this.signupForm.valid) {
-      // console.log(this.signupForm.value);
       let reqData = {
         phoneNo: this.signupForm.value.phoneNo,
         email: this.signupForm.value.email,
