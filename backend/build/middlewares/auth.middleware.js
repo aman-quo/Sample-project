@@ -11,8 +11,6 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _httpStatusCodes = _interopRequireDefault(require("http-status-codes"));
-
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 /**
@@ -38,10 +36,7 @@ var userAuth = /*#__PURE__*/function () {
               break;
             }
 
-            throw {
-              code: _httpStatusCodes["default"].BAD_REQUEST,
-              message: 'Authorization token is required'
-            };
+            throw new Error('Authorization token is required');
 
           case 4:
             bearerToken = bearerToken.split(' ')[1];

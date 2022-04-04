@@ -1,10 +1,10 @@
 import express from 'express';
 const router = express.Router();
 
-import userRoute from './user.route';
-import profileRoute from './profile.route';
-import searchRoute from './search.route';
-import contactRoute from './contact.route';
+import userRoute from './userRoute';
+import profileRoute from './profileRoute';
+import searchRoute from './searchRoute';
+import contactRoute from './contactRoute';
 /**
  * Function contains Application routes
  *

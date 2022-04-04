@@ -12,8 +12,8 @@ var _joi = _interopRequireDefault(require("@hapi/joi"));
 var newUserValidator = function newUserValidator(req, res, next) {
   var schema = _joi["default"].object({
     phoneNo: _joi["default"].number().required(),
-    email: _joi["default"].string().pattern(new RegExp('^[a-zA-z]{2}([+-_ .]*[a-zA-Z0-9]+)*[@][a-zA-z0-9]+(.[a-z]{2,3})*$')).required(),
-    password: _joi["default"].string().pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})')).required()
+    email: _joi["default"].string().pattern(new RegExp(/^[0-9a-zA-Z]+([._+-][0-9a-zA-Z]+)*@([0-9a-zA-Z][-]?)+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$/)).required(),
+    password: _joi["default"].string().pattern(new RegExp(/^[a-zA-Z0-9!@#$%^&*]{6,16}$/)).required()
   });
 
   var _schema$validate = schema.validate(req.body),

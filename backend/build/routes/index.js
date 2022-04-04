@@ -9,13 +9,13 @@ exports["default"] = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
-var _user = _interopRequireDefault(require("./user.route"));
+var _userRoute = _interopRequireDefault(require("./userRoute"));
 
-var _profile = _interopRequireDefault(require("./profile.route"));
+var _profileRoute = _interopRequireDefault(require("./profileRoute"));
 
-var _search = _interopRequireDefault(require("./search.route"));
+var _searchRoute = _interopRequireDefault(require("./searchRoute"));
 
-var _contact = _interopRequireDefault(require("./contact.route"));
+var _contactRoute = _interopRequireDefault(require("./contactRoute"));
 
 var router = _express["default"].Router();
 
@@ -28,10 +28,10 @@ var routes = function routes() {
   router.get('/', function (req, res) {
     res.json('Welcome');
   });
-  router.use('/users', _user["default"]);
-  router.use('/profiles', _profile["default"]);
-  router.use('/searches', _search["default"]);
-  router.use('/contacts', _contact["default"]);
+  router.use('/users', _userRoute["default"]);
+  router.use('/profiles', _profileRoute["default"]);
+  router.use('/searches', _searchRoute["default"]);
+  router.use('/contacts', _contactRoute["default"]);
   return router;
 };
 

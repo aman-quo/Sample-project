@@ -13,7 +13,6 @@ export const addProfile = async (body, id) => {
             interests:body.interests,
             location:body.location
         }
-        const data = await Profile.create(userData);
-        return data;
+        return  Profile.create(userData);
     }
 };

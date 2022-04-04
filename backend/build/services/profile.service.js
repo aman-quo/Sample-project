@@ -16,7 +16,7 @@ var _profile = _interopRequireDefault(require("../models/profile.model"));
 //create new profile
 var addProfile = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(body, id) {
-    var profileExist, userData, data;
+    var profileExist, userData;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -44,14 +44,9 @@ var addProfile = /*#__PURE__*/function () {
               interests: body.interests,
               location: body.location
             };
-            _context.next = 10;
-            return _profile["default"].create(userData);
+            return _context.abrupt("return", _profile["default"].create(userData));
 
-          case 10:
-            data = _context.sent;
-            return _context.abrupt("return", data);
-
-          case 12:
+          case 9:
           case "end":
             return _context.stop();
         }

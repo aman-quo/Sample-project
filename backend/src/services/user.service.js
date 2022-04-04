@@ -4,14 +4,13 @@ import jwt from 'jsonwebtoken';
 
 //create new user
 export const newUser = async (body) => {
-  const check = await User.findOne({ email: body.email, phoneNo:body.phoneNo });
+  const check = await User.findOne({ email: body.email, phoneNo: body.phoneNo });
   if (check) {
     throw new Error('User already exist');
   } else {
     const HashedPassword = await bcrypt.hash(body.password, 10);
     body.password = HashedPassword;
-    const data = await User.create(body);
-    return data;
+    return User.create(body);
   }
 };
 
@@ -21,8 +20,7 @@ export const login = async (body) => {
   if (check) {
     const match = await bcrypt.compare(body.password, check.password);
     if (match) {
-      const token = jwt.sign({ email: check.email, id: check._id, phoneNo: check.phoneNo }, process.env.SECRET);
-      return token;
+      return jwt.sign({ email: check.email, id: check._id, phoneNo: check.phoneNo }, process.env.SECRET);
     } else {
       throw new Error('Incorrect Password');
     }

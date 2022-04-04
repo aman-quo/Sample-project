@@ -9,8 +9,6 @@ exports["default"] = void 0;
 
 var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var _user = _interopRequireDefault(require("./user.model"));
-
 var profileSchema = _mongoose["default"].Schema({
   userId: {
     type: _mongoose["default"].Schema.Types.ObjectId,
