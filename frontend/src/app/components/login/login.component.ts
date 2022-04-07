@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private user: UserService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({

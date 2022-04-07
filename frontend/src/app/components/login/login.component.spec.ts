@@ -12,17 +12,19 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_BASE_HREF } from '@angular/common';
 
+
 class MockUserService {
 }
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let formBuilderMock:FormBuilder;
-  let userMock:any;
-  let routerMock:any;
+  let userMock: any;
   beforeEach(async () => {
+    userMock = {
+      login: jest.fn()
+    };
     await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
+      declarations: [LoginComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [{
         provide: APP_BASE_HREF, useValue: '/',
@@ -38,10 +40,10 @@ describe('LoginComponent', () => {
         HttpClientModule,
         MatSnackBarModule,
         AppRoutingModule,
-        BrowserAnimationsModule 
+        BrowserAnimationsModule
       ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -52,5 +54,16 @@ describe('LoginComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  describe('Test: Form valid', () => {
+    it('should call loginUser', () => {
+      const formData = {
+        email: 'demo123@gmail.com',
+        password: 'Pass1234'
+      };
+      const spyloginUser = jest.spyOn(userMock, 'login').mockReturnValue(true);
+      expect(userMock.login(formData)).toBe(true);
+      expect(spyloginUser).toHaveBeenCalledWith(formData);
+    });
   });
 });

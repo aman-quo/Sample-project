@@ -17,10 +17,13 @@ class MockUserService {
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
   let fixture: ComponentFixture<ProfileComponent>;
-
+  let userMock: any;
   beforeEach(async () => {
+    userMock = {
+      profile: jest.fn()
+    };
     await TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ],
+      declarations: [ProfileComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [{
         provide: APP_BASE_HREF, useValue: '/',
@@ -36,10 +39,10 @@ describe('ProfileComponent', () => {
         HttpClientModule,
         MatSnackBarModule,
         AppRoutingModule,
-        BrowserAnimationsModule 
+        BrowserAnimationsModule
       ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -50,5 +53,18 @@ describe('ProfileComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  describe('Test: Form valid', () => {
+    it('should call profileUser', () => {
+      const formData = {
+        name: 'Manish',
+        DOB: '02/04/1995',
+        interests: 'cricket',
+        location: 'Mumbai'
+      };
+      const spyprofileUser = jest.spyOn(userMock, 'profile').mockReturnValue(true);
+      expect(userMock.profile(formData)).toBe(true);
+      expect(spyprofileUser).toHaveBeenCalledWith(formData);
+    });
   });
 });

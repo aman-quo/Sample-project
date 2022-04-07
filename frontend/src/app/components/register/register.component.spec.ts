@@ -13,13 +13,15 @@ import { APP_BASE_HREF } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 class MockUserService {
-
 }
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
-
+  let userMock: any;
   beforeEach(async () => {
+    userMock = {
+      register: jest.fn()
+    };
     await TestBed.configureTestingModule({
       declarations: [RegisterComponent],
       providers: [{
@@ -51,5 +53,18 @@ describe('RegisterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('Test: Form valid', () => {
+    it('should call registerUser', () => {
+      const formData = {
+        phoneNo:'7418529630',
+        email: 'demo12@gmail.com',
+        password: 'Pass1234@'
+      };
+      const spyregisterUser = jest.spyOn(userMock, 'register').mockReturnValue(true);
+      expect(userMock.register(formData)).toBe(true);
+      expect(spyregisterUser).toHaveBeenCalledWith(formData);
+    });
   });
 });
