@@ -17,7 +17,9 @@ class MockUserService {
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-
+  let formBuilderMock:FormBuilder;
+  let userMock:any;
+  let routerMock:any;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],

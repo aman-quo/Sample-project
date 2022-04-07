@@ -29,31 +29,28 @@ export class ProfileComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log("on signup")
     this.submitted = true;
-    if (this.profileForm.value.password != this.profileForm.value.confirm) {
-       alert("password didn't match");
-    }
-    if (this.profileForm.valid) {
-      // console.log(this.signupForm.value);
-      let reqData = {
-        name: this.profileForm.value.name,
-        DOB: this.profileForm.value.DOB,
-        interests: this.profileForm.value.interests,
-        location: this.profileForm.value.location
-      };
-       this.user.Profile(reqData).subscribe(
-        (res: any) => {
-          this.snackBar.open(`${res.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
-          horizontalPosition: 'left' })
-          this.router.navigate(['/about']);
-        },
-        (error) => {
-          console.log(error.message);
-          this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
-          horizontalPosition: 'left' })
-        }
-      );
-    }
+    let reqData = {
+      name: this.profileForm.value.name,
+      DOB: this.profileForm.value.DOB,
+      interests: this.profileForm.value.interests,
+      location: this.profileForm.value.location
+    };
+    this.user.Profile(reqData).subscribe({
+      next: (res: any) => {
+        this.snackBar.open(`${res.message}`, '', {
+          duration: 3000, verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        })
+        this.router.navigate(['/about']);
+      },
+      error: (error) => {
+        console.log(error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 3000, verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        })
+      }
+    });
   }
 }
