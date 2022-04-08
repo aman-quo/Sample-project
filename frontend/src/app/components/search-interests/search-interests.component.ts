@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class SearchInterestsComponent implements OnInit {
   searchForm!: FormGroup;
   submitted = false;
-  searchData:any
+  searchData: any
   constructor(private user: UserService, private fb: FormBuilder, private router: Router,
     private snackBar: MatSnackBar) { }
 
@@ -22,22 +22,24 @@ export class SearchInterestsComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-      let interests= this.searchForm.value.interests;
-    this.user.Search(interests).subscribe(
-      (res: any) => {
+    let interests = this.searchForm.value.interests;
+    this.user.Search(interests).subscribe({
+      next:(res: any) => {
         this.snackBar.open(`${res.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',
           horizontalPosition: 'left',
         });
         console.log(res);
-        this.searchData=res.data;
+        this.searchData = res.data;
       },
-      (error) => {
+      error:(error:any) => {
         console.log(error.message);
-        this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
-          horizontalPosition: 'left' })
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 3000, verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        })
       }
-    );
+    })
   }
 }

@@ -4,7 +4,6 @@ const userSchema =  mongoose.Schema(
   {
     phoneNo: {
       type: Number,
-      unique:true
     },
     email: {
       type: String,

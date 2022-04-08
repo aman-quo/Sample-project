@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserService } from '../../service/user/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -8,25 +8,29 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./display-search.component.scss']
 })
 
-export class DisplaySearchComponent implements OnInit {
+export class DisplaySearchComponent {
   displayedColumns: string[] = ['name', 'DOB', 'interests', 'location', 'action'];
-  constructor(private user: UserService, private snackBar: MatSnackBar) { }
+  constructor(private user: UserService, private snackBar: MatSnackBar) {}
+
   @Input() dataSource: any;
-  ngOnInit(): void {
-  }
+
   addContact(_id: string) {
-    this.user.Contact(_id).subscribe((res: any) => {
-      this.snackBar.open(`${res.message}`, '', {
-        duration: 3000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'left',
-      });
-      console.log(res);
-    }, (error) => {
-      console.log(error.message);
-      this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
-          horizontalPosition: 'left' })
-    }
-    )
+    this.user.Contact(_id).subscribe({
+      next:(res: any) => {
+        this.snackBar.open(`${res.message}`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left',
+        });
+        console.log(res);
+      }, 
+      error:(error) => {
+        console.log(error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 3000, verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        })
+      }
+  })
   }
 }

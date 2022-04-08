@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private user: UserService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -33,22 +33,24 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
-    return this.user.Login(reqData).subscribe(
-      (res: any) => {
+    return this.user.Login(reqData).subscribe({
+      next: (res: any) => {
         this.snackBar.open(`${res.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',
           horizontalPosition: 'left',
         });
-        localStorage.setItem('token',res.data)
+        localStorage.setItem('token', res.data)
         console.log(res)
         this.router.navigate(['/profile']);
       },
-      (error) => {
+      error: (error) => {
         console.log(error.message);
-        this.snackBar.open(`${error.error.message}`, '', {duration: 3000 ,verticalPosition: 'bottom',
-          horizontalPosition: 'left' })
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 3000, verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        })
       }
-    );
+    });
   }
 }

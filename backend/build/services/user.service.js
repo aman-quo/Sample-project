@@ -20,7 +20,7 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 //create new user
 var newUser = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(body) {
-    var check, HashedPassword, data;
+    var check, HashedPassword;
     return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -48,14 +48,9 @@ var newUser = /*#__PURE__*/function () {
           case 9:
             HashedPassword = _context.sent;
             body.password = HashedPassword;
-            _context.next = 13;
-            return _user["default"].create(body);
+            return _context.abrupt("return", _user["default"].create(body));
 
-          case 13:
-            data = _context.sent;
-            return _context.abrupt("return", data);
-
-          case 15:
+          case 12:
           case "end":
             return _context.stop();
         }
@@ -73,7 +68,7 @@ exports.newUser = newUser;
 
 var login = /*#__PURE__*/function () {
   var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(body) {
-    var check, match, token;
+    var check, match;
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -87,7 +82,7 @@ var login = /*#__PURE__*/function () {
             check = _context2.sent;
 
             if (!check) {
-              _context2.next = 15;
+              _context2.next = 14;
               break;
             }
 
@@ -98,28 +93,27 @@ var login = /*#__PURE__*/function () {
             match = _context2.sent;
 
             if (!match) {
-              _context2.next = 12;
+              _context2.next = 11;
               break;
             }
 
-            token = _jsonwebtoken["default"].sign({
+            return _context2.abrupt("return", _jsonwebtoken["default"].sign({
               email: check.email,
               id: check._id,
               phoneNo: check.phoneNo
-            }, process.env.SECRET);
-            return _context2.abrupt("return", token);
+            }, process.env.SECRET));
 
-          case 12:
+          case 11:
             throw new Error('Incorrect Password');
 
-          case 13:
-            _context2.next = 16;
+          case 12:
+            _context2.next = 15;
             break;
 
-          case 15:
+          case 14:
             throw new Error('Not Registered Yet');
 
-          case 16:
+          case 15:
           case "end":
             return _context2.stop();
         }

@@ -11,8 +11,7 @@ var _mongoose = _interopRequireDefault(require("mongoose"));
 
 var userSchema = _mongoose["default"].Schema({
   phoneNo: {
-    type: Number,
-    unique: true
+    type: Number
   },
   email: {
     type: String,
